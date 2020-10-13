@@ -12,9 +12,8 @@ class Smfc < Formula
   depends_on "boost"
 
   def install
-    system "cmake","."
-    system "make"
-    system "make", "install"
+    system "cmake", "-DCMAKE_INSTALL_PREFIX:PATH=#{prefix}", "."
+    system "cmake", "--build", ".", "--target", "install", "--config", "Release"
   end
 
   def test
